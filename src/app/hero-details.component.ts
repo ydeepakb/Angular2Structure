@@ -11,12 +11,19 @@ import 'rxjs/add/operator/switchMap';
     <div *ngIf="hero">
   <h2>{{hero.name}} details!</h2>
   <div>
-    <label>id: </label>{{hero.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name" />
+  <div  class="col-md-2">
+    <label>id: </label>{{hero.id}}
   </div>
-  <button (click)="goBack()">Back</button>
+  <div class="col-md-4">
+  name:
+    <input [(ngModel)]="hero.name" placeholder="name" class="form-control"/>
+  </div>
+  <div class="col-md-6">
+   <button (click)="goBack()" class="btn btn-primary">Back</button>
+   <button (click)="addItem()" class="btn btn-primary">+ item</button>
+  </div>
+  </div>
+ 
 </div>
   `
 })
@@ -34,6 +41,10 @@ export class HeroDetailComponent implements OnInit {
     .subscribe(hero => this.hero = hero);
 }
 goBack(): void {
-            this.location.back();
-            }
+      this.location.back();
+    }
+  addItem():void{
+      let item:Hero={id:15,name:'john'};
+      this.heroService.addHeroApi(item);
+  }
 }

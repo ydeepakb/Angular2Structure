@@ -16,9 +16,11 @@ var DashboardComponent = (function () {
         this.heroes = [];
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        // this.heroService.getHeroes()
+        //   .then(heroes => this.heroes = heroes.slice(1, 5));
         var _this = this;
-        this.heroService.getHeroes()
-            .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+        this.heroService.getHeroesApi()
+            .subscribe(function (heroes) { return _this.heroes = heroes.slice(1, 5); }, function (error) { return _this.errorMessage = error; });
     };
     return DashboardComponent;
 }());

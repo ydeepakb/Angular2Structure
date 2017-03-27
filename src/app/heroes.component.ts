@@ -14,10 +14,16 @@ export class HeroesComponent  implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
   title = 'Tour of Heroes';
- 
+  errorMessage: string;
   constructor(private heroService: HeroService,private router:Router) { }
   getHeroes(): void {
-    this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
+
+     this.heroService.getHeroesApi()
+                   .subscribe(
+                     heroes => this.heroes = heroes,
+                     error =>  this.errorMessage = <any>error);
+
+   // this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
   }
   ngOnInit(): void {
     this.getHeroes();

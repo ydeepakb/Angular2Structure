@@ -19,7 +19,9 @@ var HeroesComponent = (function () {
     }
     HeroesComponent.prototype.getHeroes = function () {
         var _this = this;
-        this.heroService.getHeroesSlowly().then(function (heroes) { return _this.heroes = heroes; });
+        this.heroService.getHeroesApi()
+            .subscribe(function (heroes) { return _this.heroes = heroes; }, function (error) { return _this.errorMessage = error; });
+        // this.heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
     };
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();

@@ -29,6 +29,10 @@ var HeroDetailComponent = (function () {
     HeroDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    HeroDetailComponent.prototype.addItem = function () {
+        var item = { id: 15, name: 'john' };
+        this.heroService.addHeroApi(item);
+    };
     return HeroDetailComponent;
 }());
 __decorate([
@@ -38,7 +42,7 @@ __decorate([
 HeroDetailComponent = __decorate([
     core_1.Component({
         selector: 'hero-detail',
-        template: "\n    <div *ngIf=\"hero\">\n  <h2>{{hero.name}} details!</h2>\n  <div>\n    <label>id: </label>{{hero.id}}</div>\n  <div>\n    <label>name: </label>\n    <input [(ngModel)]=\"hero.name\" placeholder=\"name\" />\n  </div>\n  <button (click)=\"goBack()\">Back</button>\n</div>\n  "
+        template: "\n    <div *ngIf=\"hero\">\n  <h2>{{hero.name}} details!</h2>\n  <div>\n  <div  class=\"col-md-2\">\n    <label>id: </label>{{hero.id}}\n  </div>\n  <div class=\"col-md-4\">\n  name:\n    <input [(ngModel)]=\"hero.name\" placeholder=\"name\" class=\"form-control\"/>\n  </div>\n  <div class=\"col-md-6\">\n   <button (click)=\"goBack()\" class=\"btn btn-primary\">Back</button>\n   <button (click)=\"addItem()\" class=\"btn btn-primary\">+ item</button>\n  </div>\n  </div>\n \n</div>\n  "
     }),
     __metadata("design:paramtypes", [hero_service_1.HeroService,
         router_1.ActivatedRoute,

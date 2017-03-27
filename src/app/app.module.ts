@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 
@@ -11,7 +12,7 @@ import { HeroService }         from './hero.service';
 import {DashboardComponent} from './dashboard.component';
 import { AppRoutingModule }     from './app-routing.module';
 @NgModule({
-  imports:      [ BrowserModule ,FormsModule, AppRoutingModule],  //other modules the app depends on
+  imports:      [ BrowserModule ,FormsModule, AppRoutingModule,HttpModule],  //other modules the app depends on
   declarations: [ AppComponent ,HeroDetailComponent,
                   HeroesComponent,DashboardComponent],// declare all derectives and components
   bootstrap:    [ AppComponent ],// root component to bootstarp
